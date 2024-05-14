@@ -15,6 +15,7 @@ public class GameUtilTest {
     }
     @Test
     public void testThrowGameException () {
+        // Kontrollerar att ett GameException kastas när metoden toLowerCaseButFirstLetterCapitalized() anropas med null-parameter.
         Assertions.assertThrows(GameException.class, () -> {
             gameUtil.toLowerCaseButFirstLetterCapitalized(null);});
     }

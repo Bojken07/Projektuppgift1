@@ -10,8 +10,11 @@ public class ScannerTest {
 
     @Test
     public void ScannerTest () {
+        // Skapar en Scanner som använder en sträng "test" som inmatning.
         scanner = new Scanner("test");
+        // Kontrollerar om nästa rad är tillgänglig för läsning.
         Assertions.assertTrue(scanner.hasNextLine());
+        // Kontrollerar om nästa rad som läses är "test"
         Assertions.assertEquals("test", scanner.nextLine());
     }
 }

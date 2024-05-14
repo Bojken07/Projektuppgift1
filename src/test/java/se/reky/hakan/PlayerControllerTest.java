@@ -33,35 +33,53 @@ public class PlayerControllerTest {
     }
     @Test
     public void testPlayerAmount () {
+        // Besöker sidan där spelare listas.
         driver.get("http://localhost:8080/players");
+        // Hittar alla <li> element som representerar spelare.
         List<WebElement> elements = driver.findElements(By.tagName("li"));
+        // Kontrollerar att antalet <li> element är 2.
         assertEquals(2, elements.size());
     }
     @Test
     public void testPlayerDisplayed () {
+        // Besöker sidan där spelare listas.
         driver.get("http://localhost:8080/players");
+        // Hittar det första <li> elementet som representerar en spelare.
         WebElement element = driver.findElement(By.tagName("li"));
+        // Kontrollerar om elementet är synligt på sidan.
         assertTrue(element.isDisplayed());
     }
     @Test
     public void testTitle () {
+        // Besöker sidan där spelare listas.
         driver.get("http://localhost:8080/players");
+        // Hämtar titeln på sidan.
         String element = driver.getTitle();
+        // Kontrollerar att titeln är korrekt.
         assertEquals("Players List", element);
     }
     @Test
     public void testButton () {
+        // Besöker sidan där spelare listas.
         driver.get("http://localhost:8080/players");
+        // Hittar knappen på sidan.
         WebElement element = driver.findElement(By.tagName("button"));
+        // Kontrollerar att knappens text är "Logga in".
         assertEquals("Logga in", element.getText());
     }
     @Test
     public void testClick () {
+        // Besöker sidan där spelare listas.
         driver.get("http://localhost:8080/players");
+        // Skapar en väntan för att vänta på att elementet blir synligt.
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+        // Hittar alla länkar på sidan.
         List <WebElement> elements = driver.findElements(By.tagName("a"));
+        // Klickar på den första länken.
         elements.get(0).click();
+        // Väntar på att en rubrik blir synlig på den nya sidan.
         WebElement element = wait.until(ExpectedConditions.visibilityOfElementLocated(By.tagName("h1")));
+        // Kontrollerar att rubriken har rätt text.
         assertTrue(element.isDisplayed());
         assertEquals("Kalle", element.getText());
     }
