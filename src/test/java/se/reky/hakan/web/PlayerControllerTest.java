@@ -1,4 +1,4 @@
-package se.reky.hakan;
+package se.reky.hakan.web;
 
 import io.github.bonigarcia.wdm.WebDriverManager;
 import org.junit.jupiter.api.*;
@@ -82,5 +82,24 @@ public class PlayerControllerTest {
         // Kontrollerar att rubriken har rätt text.
         assertTrue(element.isDisplayed());
         assertEquals("Kalle", element.getText());
+    }
+
+    //VG delen.
+    @Test
+    public void shouldReturnExpOnClickedEndPoint () {
+        driver.get("http://localhost:8080/players");
+
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+
+        List <WebElement> elements = driver.findElements(By.tagName("a"));
+
+        elements.get(0).click();
+
+        List<WebElement> webElements = wait.until(ExpectedConditions.visibilityOfAllElementsLocatedBy(By.tagName("span")));
+
+        webElements.get(2);
+
+        assertEquals("35", webElements.get(2).getText());
+
     }
 }

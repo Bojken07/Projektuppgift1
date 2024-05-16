@@ -13,7 +13,7 @@ public class IOHandlerTest {
     @Test
     public void IoHandlerTest () {
         // Skapar en instans av IOHandler med en Scanner som innehåller sträng "test".
-        ioHandler("test");
+
         // Kontrollerar att nästa inläsning från IOHandler returnerar "test".
         Assertions.assertEquals("test", ioHandler("test").nextLine());
     }
